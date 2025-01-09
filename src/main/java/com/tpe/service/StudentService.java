@@ -38,8 +38,13 @@ public class StudentService implements IStudentService{
         return student;
     }
 
+    //4-B
     @Override
     public void deleteStudent(Long id) {
+        Student student =findStudentById(id);
+        repository.delete(student);
+
+
 
     }
 }

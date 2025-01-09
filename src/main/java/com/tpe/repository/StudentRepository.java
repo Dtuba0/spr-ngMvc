@@ -1,12 +1,14 @@
 package com.tpe.repository;
 
 import com.tpe.domain.Student;
+import com.tpe.exception.StudentNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,8 +43,18 @@ public class StudentRepository implements IStudentRepository {
 
     }
 
+    //4-c
     @Override
     public void delete(Student student) {
+
+        session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.delete(student);
+
+        transaction.commit();
+        session.close();
+
 
     }
 
@@ -57,4 +69,10 @@ public class StudentRepository implements IStudentRepository {
         session.close();
         return optional;
     }
+
+
+
+
+
+
 }

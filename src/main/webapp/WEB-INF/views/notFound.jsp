@@ -16,7 +16,7 @@
 	flex-direction: column;
     font-size: 25rem;
     color:purple;
-    background-color: gray;
+    background-color: gray ;
   }
 </style>
 
